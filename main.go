@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	routes "daucu/routes"
 )
 
 func main() {
@@ -32,6 +33,12 @@ func main() {
 	})
 
 	// Routes
+	auth := app.Group("/auth")
+	{
+		auth.POST("/register", routes.Register)
+		auth.POST("/login", routes.Login)
+		auth.POST("/profile", routes.Profile)
+	}
 
 	//Print
 	fmt.Println("Server is running on port http://localhost:9000")
