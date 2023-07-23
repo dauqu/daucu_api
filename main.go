@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"time"
 
+	auth "daucu/routes/auth"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	routes "daucu/routes"
 )
 
 func main() {
@@ -33,11 +33,12 @@ func main() {
 	})
 
 	// Routes
-	auth := app.Group("/auth")
+	auths := app.Group("/auth")
 	{
-		auth.POST("/register", routes.Register)
-		auth.POST("/login", routes.Login)
-		auth.GET("/profile", routes.Profile)
+		auths.POST("/register", auth.Register)
+		auths.POST("/login", auth.Login)
+		auths.POST("/change-password", auth.ChangePassword)
+		auths.GET("/profile", auth.Profile)
 	}
 
 	//Print
