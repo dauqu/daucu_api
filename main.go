@@ -37,7 +37,7 @@ func main() {
 	{
 		auth.POST("/register", routes.Register)
 		auth.POST("/login", routes.Login)
-		auth.POST("/profile", routes.Profile)
+		auth.GET("/profile", routes.Profile)
 	}
 
 	//Print
